@@ -20,7 +20,8 @@ class EmojiMemoryGameVM {
     private  var model: MemoryGame<String> =
         
         MemoryGame<String>(numberOfPairsOfCards: 2, cardContentFactory:
-                    { ( pairIndex: Int) in return "😘" }
+                    {   pairIndex       in return "😘" }
+                //  { ( pairIndex: Int) in return "😘" }
         )
     
     // MARK: - accesss to the model
@@ -43,7 +44,8 @@ func createCardContent ( pairIndex: Int) -> String {
 /*
  
  MemoryGame<String>(numberOfPairsOfCards: 2, cardContentFactory:
-    ( pairIndex: Int)             { return "😘" }    // remove String since swift understand func will return String
+        pairIndex                 in  return "😘" }
+      ( pairIndex: Int)           in  return "😘" }  // remove String since swift understand func will
  )
  
  MemoryGame<String>(numberOfPairsOfCards: 2, cardContentFactory:

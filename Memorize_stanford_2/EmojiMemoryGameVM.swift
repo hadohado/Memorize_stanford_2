@@ -17,7 +17,10 @@ import SwiftUI
 class EmojiMemoryGameVM {
     
     // private(set) var model: MemoryGame<String>
-    private  var model: MemoryGame<String>
+    private  var model: MemoryGame<String> =
+        MemoryGame<String>(numberOfPairsOfCards: 2, cardContentFactory: createCardContent )
+    
+    // MARK: - accesss to the model
     
     var cards: Array<MemoryGame<String>.Card> {
         return model.cards
@@ -28,4 +31,8 @@ class EmojiMemoryGameVM {
     func choose(card: MemoryGame<String>.Card) {
         model.choose(card: card)
     }
+}
+
+func createCardContent ( pairIndex: Int) -> String {
+    return "😘"
 }

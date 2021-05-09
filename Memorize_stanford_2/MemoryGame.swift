@@ -16,6 +16,17 @@ struct MemoryGame<CardContent> {
             // as long as object can be turn into string for printing
     }
     
+    init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent ) {
+        cards = Array<Card>()
+        for pairIndex in 0..<numberOfPairsOfCards {
+            // add 2 cards per pair
+            // this model doesn't know what the CardContent is, let emojimemorygame viewmodel does it
+            let content = cardContentFactory(pairIndex)
+            cards.append(Card(isFaceUp: false, isMatched: false, content: content) )
+            cards.append(Card(isFaceUp: false, isMatched: false, content: content) )
+        }
+    }
+    
     struct Card { // full name of struct is MemoryGame.Card
         // what this card look like ?
         var isFaceUp: Bool

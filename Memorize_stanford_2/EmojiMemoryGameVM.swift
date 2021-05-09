@@ -20,7 +20,7 @@ class EmojiMemoryGameVM {
     private  var model: MemoryGame<String> =
         
         MemoryGame<String>(numberOfPairsOfCards: 2, cardContentFactory:
-                            createCardContent
+                    ( pairIndex: Int) -> String { return "😘" }
         )
     
     // MARK: - accesss to the model

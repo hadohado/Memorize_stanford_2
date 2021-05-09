@@ -16,7 +16,12 @@ import SwiftUI
 
 class EmojiMemoryGameVM {
     
-    private(set) var model: MemoryGame<String>
+    // private(set) var model: MemoryGame<String>
+    private  var model: MemoryGame<String>
+    
+    var cards: Array<MemoryGame<String>.Card> {
+        return model.cards
+    }
     
     // MARK: - Intents
     

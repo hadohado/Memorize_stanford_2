@@ -18,10 +18,15 @@ class EmojiMemoryGameVM {
     
     // Cannot use instance member 'createMemoryGame' within property initializer;
     // property initializers run before 'self' is available
+    // this means can not use internal function createMemoryGame()
+    // UNTIL all other inernal var like model are initialized: catch 22
+    // so we change func create..() to STATIC func creat..()
+    // STATIC in front of function means this func belong to a TYPE of EmojiMemoryGameVM CLASS, not an instance of class
+
     
     private  var model: MemoryGame<String> = createMemoryGame()
     
-    func createMemoryGame() -> MemoryGame<String> {
+    static func createMemoryGame() -> MemoryGame<String> {
         let emojis: Array<String> = ["😋", "💛"]
         
         return

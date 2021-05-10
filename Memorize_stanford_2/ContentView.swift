@@ -17,7 +17,6 @@ struct ContentView: View {
                 CardView(card: card).onTapGesture {
                     viewModel.choose(card: card)
                 }
-                // CardView(card: card).onTapGesture (perform: { viewModel.choose(card: card) })
             }
         }
         .padding()
@@ -28,7 +27,6 @@ struct ContentView: View {
 
 struct CardView: View {
     var card: MemoryGame<String>.Card
-    // var isFaceUp:  Bool
     
     var body: some View {
         ZStack {

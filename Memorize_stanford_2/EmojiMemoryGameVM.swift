@@ -16,12 +16,16 @@ import SwiftUI
 
 class EmojiMemoryGameVM {
     
-    // private(set) var model: MemoryGame<String>
-    private  var model: MemoryGame<String> =
+    // Cannot use instance member 'createMemoryGame' within property initializer;
+    // property initializers run before 'self' is available
+    
+    private  var model: MemoryGame<String> = createMemoryGame()
+    
+    func createMemoryGame() -> MemoryGame<String> {
+        let emojis: Array<String> = ["😋", "💛"]
+        return MemoryGame<String>( numberOfPairsOfCards: 2) { _  in return "😘" }
+    }
         
-        // change M.. ( n:2, c: {..} )  to
-        //        M.. ( n:2 )   {..}      // move last function {..} outside of (..)
-        MemoryGame<String>( numberOfPairsOfCards: 2) { pairIndex  in return "😘" }
     
     //  MemoryGame<String>( numberOfPairsOfCards: 2, cardContentFactory: { pairIndex  in return "😘" } )
     

@@ -23,8 +23,8 @@ class EmojiMemoryGameVM {
     // so we change func create..() to STATIC func creat..()
     // STATIC in front of function means this func belong to a TYPE of EmojiMemoryGameVM CLASS, not an instance of class
 
-    
-    private  var model: MemoryGame<String> = createMemoryGame()
+    private  var model: MemoryGame<String> = EmojiMemoryGameVM.createMemoryGame()
+    // private  var model: MemoryGame<String> = createMemoryGame()
     
     static func createMemoryGame() -> MemoryGame<String> {
         let emojis: Array<String> = ["😋", "💛"]

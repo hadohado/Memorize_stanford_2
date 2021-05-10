@@ -22,7 +22,6 @@ struct ContentView: View {
         .padding()
         .foregroundColor(Color.orange)
     }
-    
 }
 
 struct CardView: View {
@@ -37,7 +36,6 @@ struct CardView: View {
             } else {
                 RoundedRectangle(cornerRadius: 10.0).fill()
             }
-            
         }
     }
 }

@@ -23,7 +23,9 @@ class EmojiMemoryGameVM {
     
     func createMemoryGame() -> MemoryGame<String> {
         let emojis: Array<String> = ["😋", "💛"]
-        return MemoryGame<String>( numberOfPairsOfCards: 2) { _  in return "😘" }
+        return MemoryGame<String>( numberOfPairsOfCards: 2) { pairIndex  in
+            return emojis[pairIndex]
+        }
     }
         
     

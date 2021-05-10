@@ -23,11 +23,25 @@ class EmojiMemoryGameVM {
     
     func createMemoryGame() -> MemoryGame<String> {
         let emojis: Array<String> = ["😋", "💛"]
-        return MemoryGame<String>( numberOfPairsOfCards: 2) { pairIndex  in
-            return emojis[pairIndex]
-        }
+        
+        return
+            MemoryGame<String>( numberOfPairsOfCards: 2) { pairIndex  in return emojis[pairIndex] }
+        //  MemoryGame<String>( numberOfPairsOfCards: 2, { pairIndex  in return emojis[pairIndex] } )
+        //                     <--------------- init() inside MemoryGame<..>   --------------------->
+        // the function "{pairIndex in return emojis[pairIndex] }" output is emojs[0] or emojis[1] ...
     }
         
+/*
+     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent ) {
+         cards = Array<Card>()
+         for pairIndex in 0..<numberOfPairsOfCards {
+             // this model doesn't know what the CardContent is, let emojimemorygame viewmodel does it
+             let content = cardContentFactory(pairIndex) = emojis[0] = "😋"  or emojs[1] = "💛"
+             cards.append(Card(isFaceUp: false, isMatched: false, content: content) )
+             cards.append(Card(isFaceUp: false, isMatched: false, content: content) )
+         }
+     }
+ */
     
     //  MemoryGame<String>( numberOfPairsOfCards: 2, cardContentFactory: { pairIndex  in return "😘" } )
     

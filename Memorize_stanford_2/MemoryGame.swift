@@ -22,15 +22,17 @@ struct MemoryGame<CardContent> {
             // add 2 cards per pair
             // this model doesn't know what the CardContent is, let emojimemorygame viewmodel does it
             let content = cardContentFactory(pairIndex)
-            cards.append(Card(isFaceUp: false, isMatched: false, content: content) )
-            cards.append(Card(isFaceUp: false, isMatched: false, content: content) )
+            cards.append(Card(id: pairIndex,  content: content) )
+            cards.append(Card(id: pairIndex,  content: content) )
         }
     }
     
-    struct Card { // full name of struct is MemoryGame.Card
+    struct Card: Identifiable {
+        var id: Int
+        // full name of struct is MemoryGame.Card
         // what this card look like ?
-        var isFaceUp: Bool
-        var isMatched: Bool
+        var isFaceUp: Bool = true
+        var isMatched: Bool = false
         var content: CardContent // what is on face of card
             // CardContent is of type Generic
     }

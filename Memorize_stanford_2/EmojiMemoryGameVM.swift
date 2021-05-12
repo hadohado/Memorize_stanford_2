@@ -14,7 +14,11 @@
 
 import SwiftUI
 
-class EmojiMemoryGameVM {
+class EmojiMemoryGameVM: ObservableObject { // re-active
+    
+    // var objectWillChange: ObservableObjectPublisher <-- we get this for free when add ObservableObject
+    // objectWillChange is publisher, will publish to the world when something will change
+    //  so View should get ready to re-act to this change
     
     private  var model: MemoryGame<String> = EmojiMemoryGameVM.createMemoryGame()
     
@@ -23,7 +27,7 @@ class EmojiMemoryGameVM {
         return
             MemoryGame<String>( numberOfPairsOfCards: 2) { pairIndex  in return emojis[pairIndex] }
     }
-            
+    
     // MARK: - accesss to the model
     
     var cards: Array<MemoryGame<String>.Card> {
@@ -33,6 +37,7 @@ class EmojiMemoryGameVM {
     // MARK: - Intents
     
     func choose(card: MemoryGame<String>.Card) {
+        objectWillChange.send() // re-active
         model.choose(card: card)
     }
 }

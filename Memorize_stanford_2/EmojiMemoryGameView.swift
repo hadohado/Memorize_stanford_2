@@ -3,7 +3,7 @@
 //  Memorize_stanford_2
 //
 //  Created by ha tuong do on 5/8/21.
-//
+// re-ative !!   @ObservedObject   (to model)
 
 import SwiftUI
 
@@ -16,7 +16,6 @@ struct EmojiMemoryGameView: View {
             ForEach(viewModel.cards) {card in
                 CardView(card: card).onTapGesture {
                     viewModel.choose(card: card)
-                    // self.viewModel.choose(card: card) <-- dont need self anymore in new swift version
                 }
             }
         }

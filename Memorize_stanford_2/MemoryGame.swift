@@ -11,8 +11,27 @@ import Foundation
 struct MemoryGame<CardContent> {
     var cards: Array<Card>
     
-    func choose(card: Card) {
+    // func choose( let  card: Card) { // 'let' in this position is interpreted as an argument label
+    // func choose(`let` card: Card) { // 'let' means card is constant, can not change it inside func
+    mutating func choose(card: Card) { // <- this Card is a copy of 1 of cards above, so change it will not change cards array !!! 🧲
+        
         print("card chosen: \(card)")
+        let chosenIndex: Int = self.index(of: card)
+        
+        cards[chosenIndex].isFaceUp = !cards[chosenIndex].isFaceUp
+        // let chosenCard: Card = cards[chosenIndex] <- copy a card from an array, no longer part of array itself !
+        // chosenCard.isFaceUp = !chosenCard.isFaceUp
+        
+        // card.isFaceUp = !card.isFaceUp // ERROR: Cannot assign to property: 'card' is a 'let' constant
+    }
+    
+    // func index(of: Card) -> Int { // "of" is external para people use to call this func, we need inernal para
+    func index(of card: Card) -> Int { // "of" is external para people use to call this func, we need inernal para
+        
+        for idx in 0..<cards.count {
+            if cards[idx].id == card.id { return idx }
+        }
+        return 0 // TODO: bogus! need to fix this code
     }
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent ) {

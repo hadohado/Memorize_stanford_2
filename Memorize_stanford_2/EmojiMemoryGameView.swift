@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EmojiMemoryGameView.swift ( was ContentView.swift
 //  Memorize_stanford_2
 //
 //  Created by ha tuong do on 5/8/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct EmojiMemoryGameView: View {
     
     var viewModel: EmojiMemoryGameVM
     
@@ -16,6 +16,7 @@ struct ContentView: View {
             ForEach(viewModel.cards) {card in
                 CardView(card: card).onTapGesture {
                     viewModel.choose(card: card)
+                    // self.viewModel.choose(card: card) <-- dont need self anymore in new swift version
                 }
             }
         }
@@ -42,6 +43,6 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: EmojiMemoryGameVM() )
+        EmojiMemoryGameView(viewModel: EmojiMemoryGameVM() )
     }
 }

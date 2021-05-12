@@ -20,12 +20,14 @@ class EmojiMemoryGameVM: ObservableObject { // re-active
     // objectWillChange is publisher, will publish to the world when something will change
     //  so View should get ready to re-act to this change
     
-    private  var model: MemoryGame<String> = EmojiMemoryGameVM.createMemoryGame()
+    // add Published instead of objectWillChange.send() everywhere there are change
+    // Published is property wrapper
+    @Published private  var model: MemoryGame<String> = EmojiMemoryGameVM.createMemoryGame() // re-active
     
     static func createMemoryGame() -> MemoryGame<String> {
-        let emojis: Array<String> = ["😋", "💛"]
+        let emojis: Array<String> = ["😋", "💛", "🍒"]
         return
-            MemoryGame<String>( numberOfPairsOfCards: 2) { pairIndex  in return emojis[pairIndex] }
+            MemoryGame<String>( numberOfPairsOfCards: emojis.count) { pairIndex  in return emojis[pairIndex] }
     }
     
     // MARK: - accesss to the model
@@ -37,11 +39,11 @@ class EmojiMemoryGameVM: ObservableObject { // re-active
     // MARK: - Intents
     
     func choose(card: MemoryGame<String>.Card) {
-        objectWillChange.send() // re-active
+        // objectWillChange.send() // re-active, dont need object..() since we have @Published above
         model.choose(card: card)
     }
 }
 
-func createCardContent ( pairIndex: Int) -> String {
-    return "😘"
-}
+//func createCardContent ( pairIndex: Int) -> String {
+//    return "😘"
+//}

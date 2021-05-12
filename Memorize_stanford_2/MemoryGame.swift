@@ -39,8 +39,8 @@ struct MemoryGame<CardContent> {
         for pairIndex in 0..<numberOfPairsOfCards {
             // this model doesn't know what the CardContent is, let emojimemorygame viewmodel does it
             let content = cardContentFactory(pairIndex)
-            cards.append(Card(id: pairIndex,  content: content) )
-            cards.append(Card(id: pairIndex,  content: content) )
+            cards.append(Card(id: pairIndex * 2    ,  content: content) ) // fix ERROR: pairIndex -> pairIndex * 2
+            cards.append(Card(id: pairIndex * 2 + 1,  content: content) ) // fix ERROR: pairIndex -> pairIndex * 2 + 1
         }
     }
     

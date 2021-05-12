@@ -11,6 +11,8 @@
 // all Views will have pointer to ViewModel
 // Views live inside a house which is ViewModel
 // they look out the same window to see outside world = Model !
+//
+// re-active  !!
 
 import SwiftUI
 
@@ -22,7 +24,8 @@ class EmojiMemoryGameVM: ObservableObject { // re-active
     
     // add Published instead of objectWillChange.send() everywhere there are change
     // Published is property wrapper
-    @Published private  var model: MemoryGame<String> = EmojiMemoryGameVM.createMemoryGame() // re-active
+    @Published private  var model: MemoryGame<String> =
+        EmojiMemoryGameVM.createMemoryGame() // re-active
     
     static func createMemoryGame() -> MemoryGame<String> {
         let emojis: Array<String> = ["😋", "💛", "🍒"]

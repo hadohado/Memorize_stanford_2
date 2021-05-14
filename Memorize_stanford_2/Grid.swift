@@ -26,7 +26,11 @@ struct Grid<Item, ItemView> : View where Item: Identifiable, ItemView: View {
     
     func body1(for layout: GridLayout) -> some View {
         ForEach(items) { item in
-            body2(for: item, in: layout)
+            // body2(for: item, in: layout)
+            return viewForItem(item)
+                .frame(width: layout.itemSize.width, height: layout.itemSize.height)
+                .position(layout.location(ofItemAt: self.index(of: item)))
+
             // don't do this: only show 1 card
             //   viewForItem(item)
             //   .frame(width: layout.itemSize.width, height: layout.itemSize.height)

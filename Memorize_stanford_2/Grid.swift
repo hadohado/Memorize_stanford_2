@@ -10,7 +10,7 @@ import SwiftUI
 // struct Grid<Item, ItemView> : View  {
 struct Grid<Item, ItemView> : View where Item: Identifiable, ItemView: View {
     var items: [Item]
-    var viewForItem: (Item) -> ItemView
+    var viewForItem: (Item) -> ItemView // viewForItem() is a function defined in E..MemoryGameView.swift
     
     init(_ items: [Item], viewForItem: @escaping (Item) -> ItemView) {
         self.items = items
@@ -28,7 +28,7 @@ struct Grid<Item, ItemView> : View where Item: Identifiable, ItemView: View {
             // body2(for: item, in: layout)
             return viewForItem(item)
                 .frame(width: layout.itemSize.width, height: layout.itemSize.height)
-                .position(layout.location(ofItemAt: self.index(of: item)))
+                .position(layout.location(ofItemAt: self.items.firstIndex(matching: item)))
         }
     }
     

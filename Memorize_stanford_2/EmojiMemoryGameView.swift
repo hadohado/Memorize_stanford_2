@@ -18,6 +18,9 @@ struct EmojiMemoryGameView: View {
 //    }
     
     var body: some View {
+        
+        // Grid take a func { card in ... } that return
+        //      a view & location of view to draw within the Grid
         Grid(viewModel.cards, viewForItem: { card  in
             CardView(card: card).onTapGesture {
                 viewModel.choose(card: card)
